@@ -38,7 +38,11 @@
 <template name="player">
   <div class="player {{selected}}">
     <span class="name">{{name}}</span>
-    <span class="response">{{response}}</span>
+    {{> response}}
   </div>
+</template>
+
+<template name="response">
+  <span class="response">{{response}}</span>
 </template>
 

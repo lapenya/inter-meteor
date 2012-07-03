@@ -12,10 +12,8 @@ Template.leaderboard.selected_name = ->
 Template.player.selected = ->
   (if Session.equals("selected_player", @_id) then "selected" else "")
 
-Template.player.events = click: ->
-  player = Players.findOne(@_id)
+Template.response.events = click: ->
   Session.set "selected_player", @_id
-  Players.update Session.get("selected_player"),
+  Players.update @_id,
     $set:
-      response: if player.response == 'Si' then 'No' else 'Si'
-
+      response: if @response == 'Si' then 'No' else 'Si'
