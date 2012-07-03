@@ -1,3 +1,5 @@
+Players = new Meteor.Collection("players")
+
 Template.leaderboard.players = ->
   Players.find {},
     sort:
