@@ -1,0 +1,109 @@
+<head>
+  <title>Inter Lavapies</title>
+</head>
+
+<body>
+  <div id="outer">
+    {{> global}}
+  </div>
+</body>
+
+<template name="global">
+  {{#if current_user}}
+    <h1>{{current_user}}</h1>
+    {{> games_list}}
+    <br/>
+    <br/>
+    <br/>
+    {{> players_games}}
+    <br/>
+    <div class="none">Pincha sobre otro nombre para cambiar de jugador</div>
+  {{else}}
+    <h1>¿Quién eres?</h1>
+    {{> players_list}}
+  {{/if}}
+</template>
+
+<template name="games_list">
+  {{#each games}}
+    {{> game}}
+  {{/each}}
+</template>
+
+<template name="game">
+  <div class="player">
+    <strong>¿Juegas el {{date}}?</strong>
+    {{> response}}
+  </div>
+</template>
+
+<template name="response">
+  <div class="response">
+    {{#if is_current_user}}
+      <button class="btn btn-large {{si_class}}">Sí</button>
+      <button class="btn btn-large {{no_class}}">No</button>
+    {{else}}
+      {{value}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="players_games">
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th></th>
+        {{#each dates}}
+          <th class="player">
+            <div>{{date}} {{rival}}</div>
+            <br/>
+            <div class="alert alert-info count">
+              {{players_in}}
+            </div>
+          </th>
+        {{/each}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each players}}
+        <tr>
+          <td>
+            <div class="player">
+              {{> player}}
+            </div>
+          </td>
+          {{#each responses}}
+            <td class="player response">
+              {{> response}}
+            </td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="players_list">
+  <table class="table table-condensed">
+    <tbody>
+      {{#each players}}
+      <tr>
+         <td>
+            <div class="player">
+              {{> player}}
+            </div>
+         </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="player">
+  {{#if current_user}}
+    <span class="name">{{name}}</span>
+  {{else}}
+    <input type="radio"> <span class="name">{{name}}</span></option>
+  {{/if}}
+</template>
+

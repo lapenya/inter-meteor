@@ -35,10 +35,12 @@ body {
 
 .player {
     padding: 5px;
+    font-size: 1.25em;
 }
 
 .player .name {
     display: inline-block;
+    cursor: pointer;
     width: 300px;
     font-size: 1.25em;
 }
@@ -47,18 +49,10 @@ body {
     cursor: pointer;
     display: inline-block;
     width: 100px;
-    text-align: right;
+    text-align: center;
     font-size: 1.25em;
     font-weight: bold;
     color: #777;
-}
-
-.player.selected {
-    background-color: red;
-}
-
-.player.selected .response {
-    color: black;
 }
 
 .details, .none {
@@ -73,8 +67,9 @@ body {
 
 .none {
     color: #777;
+    cursor: pointer;
 }
 
-.inc {
-  cursor: pointer;
+.count {
+    text-align: center;
 }
