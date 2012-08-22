@@ -12,12 +12,12 @@ isCurrentPlayer = (name) -> name == currentPlayer()
 allPlayers = -> Players.find {}, sort: name: 1
 
 login = (name) ->
-  login_user = name || getURLParameter('player') || $.cookie('player')
+  login_user = name || getURLParameter('player') || amplify.store('player')
   if login_user
     player = findPlayer(login_user)
     name = player and player.name
     Session.set 'current_user', name
-    $.cookie('player', name, expires: 365)
+    amplify.store('player', name)
 
 Template.global.current_user = ->
   currentPlayer() || login()
