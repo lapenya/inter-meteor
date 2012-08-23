@@ -49,9 +49,9 @@ Template.players_games.responses = ->
 Template.players_list.players = ->
   allPlayers()
 
-Template.player.events = click: ->
+Template.player.events = click: (evt) ->
+  $(evt.target).parents('td').effect('highlight')
   login(@name)
-
 
 Template.games_list.games = ->
   missing_responses = Responses.find
@@ -108,5 +108,5 @@ Template.response.events = click: (evt) ->
     )
 
   # And send me email
-  Meteor.call 'sendEmail', @player, @game.when, value, -> console.log "Sent email"
+  #Meteor.call 'sendEmail', @player, @game.when, value, -> console.log "Sent email"
 
