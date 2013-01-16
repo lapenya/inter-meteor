@@ -2,6 +2,7 @@ Players   = new Meteor.Collection("players")
 Games     = new Meteor.Collection("games")
 Responses = new Meteor.Collection("responses")
 
+###
 Meteor.startup ->
   Players.remove({})
   names = [ "Pablo", "Edu", "Abel", "Negro", "Dani",
@@ -29,4 +30,5 @@ Meteor.startup ->
         player: player.name
         game: game._id
         value: ''
+###
 
