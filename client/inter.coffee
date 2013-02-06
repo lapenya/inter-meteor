@@ -32,7 +32,7 @@ Template.players_games.dates = ->
   dates = []
   Games.find({}, sort: when: 1).forEach (game) ->
     players_in = Responses.find
-      value: 'Sí'
+      value: 'Si'
       game: game._id
     dates.push date: formatDate(game.when), rival: game.rival, players_in: players_in.count()
 
@@ -77,7 +77,7 @@ Template.response.si_class = ->
     game: @game._id
   val = resp and resp.value
   r = ''
-  r += 'btn-success' if val == 'Sí'
+  r += 'btn-success' if val == 'Si'
   r += 'disabled' unless isCurrentPlayer(@player)
   r
 

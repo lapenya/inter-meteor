@@ -12,7 +12,9 @@ body {
 
 #outer {
     width: 600px;
-    margin: 0 auto;    
+    margin: 50px;
+    float: left;
+
 }
 
 .dates {
